@@ -19,17 +19,34 @@
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Wellcom to DXC VIETNAM</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-
+<style>
+input{
+color: transparent;
+}
+input[type=submit] {
+	background:
+		url(https://cdn-icons-png.flaticon.com/512/299/299728.png);
+	border: 0;
+	display: block;
+	height: 30px;
+	width: _the_image_width;
+}
+</style>
 
 </head>
 <body>
+	<nav class="navbar navbar-light bg-light">
+		<img style="height: 100px;"
+			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
 
-	<img style="height: 100px"
-		src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
-	<div class="container">
+		<form th:action="@{/list}" method="get">
+			<input type="submit" name="local" value="vn">
+		</form>
 
-		<h2 style="text-align: center">List Client</h2>
-		<hr />
+	</nav>
+
+
+	<div class="container" style="margin-top: 20px">
 		<div class="alert alert-success" id="success-alert" role="alert"
 			th:if="${success}">
 			<strong th:text="${success}"></strong>
@@ -70,7 +87,9 @@
 					<td th:text="${client.Address}"></td>
 					<td th:text="${client.Country}"></td>
 					<td><a th:href="@{/updateClientForm(Id=${client.Id})}"
-						class="btn btn-info mb-2">Update client</a></td>
+						class="btn btn-info mb-2">Update client </a> <a
+						th:href="@{/detailClientForm(Id=${client.Id})}"
+						class="btn btn-info mb-2">Detail client </a></td>
 				</tr>
 			</tbody>
 
@@ -82,9 +101,8 @@
 
 
 <footer>
-	<p
-		style="text-align: center; bottom: 0;">
-		Copyright © 2021 DXC Technology </p>
+	<p style="text-align: center; bottom: 0;">Copyright © 2021 DXC
+		Technology </p>
 </footer>
 
 </html>
@@ -98,7 +116,6 @@
 
 <script>
 	$(document).ready(function() {
-
 		$("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
 			$("#success-alert").slideUp(500);
 		});

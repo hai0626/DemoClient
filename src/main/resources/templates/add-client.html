@@ -14,11 +14,13 @@
 
 </head>
 <body>
-<img style="height: 100px"
+	<nav class="navbar navbar-light bg-light">
+		<img style="height: 100px;"
 			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
+	</nav>
 	<div class="container">
 		<h2 style="text-align: center">Add Client</h2>
-		<hr />
+
 		<form th:action="@{createClient}" th:object="${client}" method="POST">
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">First
@@ -49,13 +51,14 @@
 			</div>
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Date of
-					Birth </label> <input type="date" max="3000-01-01"
-					onfocus="this.max=new Date().toISOString().split('T')[0]"
+					Birth </label> <input type="date" 
 					th:field="*{DateOfBirth}" placeholder="Enter DateOfBirth"
 					class="form-control col-4 mb-4" id="theDate">
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('DateOfBirth')}"
 					th:errors="*{DateOfBirth}">
+					<span th:if="${#fields.hasErrors('DateOfBirth')}"
+						th:errors="*{DateOfBirth}">Error!</span>
 			</div>
 
 			<div class="col-md-12">
@@ -73,7 +76,7 @@
 				Status </label>
 			<div class="col-md-12">
 
-				<select class="form-control col-4 mb-4" d
+				<select class="form-control col-4 mb-4" 
 					aria-label="select example" th:field="*{maritalStatus}">
 					<option value="">Open this select menu</option>
 					<option value="Single">S - Single</option>
@@ -106,9 +109,9 @@
 					th:if="${#fields.hasErrors('Country')}" th:errors="*{Country}">
 			</div>
 
-			<button class="btn btn-primary"  type="submit">Save</button>
+			<button class="btn btn-primary" type="submit">Save</button>
 			<a th:href="@{/list}" class="btn btn-danger">Back to list</a>
-			<hr />	
+			<hr />
 		</form>
 
 	</div>
@@ -116,9 +119,8 @@
 </body>
 
 <footer>
-	<p
-		style="text-align: center; bottom: 0;">
-		Copyright © 2021 DXC Technology </p>
+	<p style="text-align: center; bottom: 0;">Copyright © 2021 DXC
+		Technology </p>
 </footer>
 
 </html>

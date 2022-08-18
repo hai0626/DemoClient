@@ -19,34 +19,28 @@
 			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
 	</nav>
 	<div class="container">
-		<h2 style="text-align: center">Update Client</h2>
+		<h2 style="text-align: center">Detail Client</h2>
 
 		<form th:action="@{saveClient}" th:object="${client}" method="POST"
 			class="was-validated">
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">First
-					name</label> <input type="text" th:field="*{FirstName}"
-					placeholder="Enter FirstName" class="form-control col-4 mb-4">
+					name</label> <input  type="text" th:field="*{FirstName}"
+					placeholder="Enter FirstName" class="form-control col-4 mb-4" readonly>
 				<p class="alert alert-danger col-4 mb-4 col-4 mb-4"
 					th:if="${#fields.hasErrors('FirstName')}" th:errors="*{FirstName}">
 			</div>
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Last
-					name</label> <input type="text" th:field="*{LastName}"
-					placeholder="Enter LastName" class="form-control col-4 mb-4" >
+					name</label> <input  type="text" th:field="*{LastName}"
+					placeholder="Enter LastName" class="form-control col-4 mb-4" readonly>
 				<p class="alert alert-danger col-4 mb-4 col-4 mb-4"
 					th:if="${#fields.hasErrors('LastName')}" th:errors="*{LastName}">
 			</div>
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Gender </label>
-
-				<select class="form-control col-4 mb-4" aria-label="select example"
-					th:field="*{gender}">
-					<option value="">Open this select menu</option>
-					<option value="Male">M - Male</option>
-					<option value="Female">F - Female</option>
-					<option value="Unknown">U - Unknown</option>
-				</select>
+				<input  type="text" th:field="*{gender}"
+					placeholder="Enter LastName" class="form-control col-4 mb-4" readonly>				
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('Gender')}" th:errors="*{Gender}">
 			</div>
@@ -55,7 +49,7 @@
 					Birth </label> <input type="date" max="3000-01-01"
 					onfocus="this.max=new Date().toISOString().split('T')[0]"
 					th:field="*{DateOfBirth}" placeholder="Enter DateOfBirth"
-					class="form-control col-4 mb-4" id="theDate">
+					class="form-control col-4 mb-4" id="theDate" readonly>
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('DateOfBirth')}"
 					th:errors="*{DateOfBirth}">
@@ -75,41 +69,30 @@
 			<label for="validationDefault01" class="form-label">Martial
 				Status </label>
 			<div class="col-md-12">
-
-				<select class="form-control col-4 mb-4" 
-					aria-label="select example" th:field="*{maritalStatus}">
-					<option value="">Open this select menu</option>
-					<option value="Single">S - Single</option>
-					<option value="Married">M - Married</option>
-					<option value="Discorved">D - Discorved</option>
-				</select>
+			<input  type="text" th:field="*{maritalStatus}"
+					placeholder="Enter LastName" class="form-control col-4 mb-4" readonly>
+				
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('MaritalStatus')}"
 					th:errors="*{MaritalStatus}">
 			</div>
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Address
-				</label> <input type="text" th:field="*{address}"
+				</label> <input readonly type="text" th:field="*{address}"
 					placeholder="Enter Address" class="form-control col-4 mb-4">
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('Address')}" th:errors="*{Address}">
 			</div>
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Country
-				</label> <select class="form-control col-4 mb-4" aria-label="select example"
-					th:field="*{country}">
-					<option value="">Open this select menu</option>
-					<option value="Vietnam">VNI - Vietnam</option>
-					<option value="United States">USA - United States</option>
-					<option value="Singapore">SIN - Singapore</option>
-					<option value="Malaysia">MAL - Malaysia</option>
-				</select>
+				</label> 
+				<input  type="text" th:field="*{country}"
+					placeholder="Enter LastName" class="form-control col-4 mb-4" readonly>
 
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('Country')}" th:errors="*{Country}">
 			</div>
 			<input hidden th:field="*{id}">
-			<button class="btn btn-primary" onclick="myFunction()" type="submit">Save</button>
 			<a th:href="@{/list}" class="btn btn-danger">Back to list</a>
 		</form>
 		<hr />

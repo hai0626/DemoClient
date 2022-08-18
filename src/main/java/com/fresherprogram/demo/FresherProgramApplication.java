@@ -1,5 +1,6 @@
 package com.fresherprogram.demo;
 
+
 import java.util.Date;
 
 
@@ -20,17 +21,19 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FresherProgramApplication {
 
-	
+
 	private static final Logger logger = LogManager.getLogger(FresherProgramApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(FresherProgramApplication.class, args);
-		logger.debug("This is a debug message");
+		
         logger.info("This is an info message");
         logger.warn("This is a warn message");
         logger.error("This is an error message");
         logger.fatal("This is a fatal message");
+
 		
 	}
+	
 	
 	
 

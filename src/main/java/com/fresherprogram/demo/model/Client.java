@@ -11,6 +11,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -121,14 +122,16 @@ public class Client   {
 		Country = country;
 	}
 	
-	@NotEmpty()
-	@Size(min=2,message="FirstName should have at least 2 character")
+	@NotEmpty(message = "Please enter FirstName")
+	@Size(min=2,message="LastName must be between 2 and 60 character")
+	@Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
 	@Column(name = "FirstName", columnDefinition = "nvarchar(60) not null")	
 	private String FirstName;
 
 	
-	@NotEmpty()
-	@Size(min=2,message="FirstName should have at least 2 character")
+	@NotEmpty(message = "Please enter LastName")
+	@Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
+	@Size(min=2,max=60,message="FirstName must be between 2 and 60 character")
 	@Column(name = "LastName", columnDefinition = "nvarchar(60) not null")
 	private String LastName;
 	
@@ -152,11 +155,13 @@ public class Client   {
 	private String MaritalStatus;
 	
 	@NotEmpty(message = "Please enter Address")
-	@Column(name = "Address", columnDefinition = "nvarchar(30) not null")
+	@Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
+	@Size(min=2,max=60,message="FirstName must be between 2 and 120 character")
+	@Column(name = "Address", columnDefinition = "nvarchar(120) not null")
 	private String Address;
 	
 	@NotEmpty(message = "Please enter Country")
-	@Column(name = "Country", columnDefinition = "nvarchar(100) not null")
+	@Column(name = "Country", columnDefinition = "nvarchar(30) not null")
 	private String Country;
 
 }

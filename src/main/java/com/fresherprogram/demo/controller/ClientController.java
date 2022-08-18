@@ -34,9 +34,9 @@ public class ClientController {
 	private ClientRepository cRepo;
 
 	@GetMapping({ "/show", "/", "/list" })
-	public ModelAndView show(Client client, String keyword) {
-		ModelAndView mav = new ModelAndView("list-client");
-		Locale locale = new Locale("us");
+	public ModelAndView show(Client client, String keyword, String local) {
+		ModelAndView mav = new ModelAndView("list-client");				
+		Locale locale = new Locale(local);
 
 		ResourceBundle bundle = ResourceBundle.getBundle("res", locale);
 		Enumeration<String> keys = bundle.getKeys();
@@ -66,7 +66,7 @@ public class ClientController {
 
 	@PostMapping("/createClient")
 	public String createClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes model) {
-
+		Date date = new Date();
 		Optional<Client> clientByIdentityNumber = cRepo.findClientByIdentityNumber(client.getIdentityNumber());
 		if (bindingResult.hasErrors()) {
 			return "add-client";
@@ -75,6 +75,11 @@ public class ClientController {
 			bindingResult.rejectValue("IdentityNumber", "client.identityNumber",
 					"There is already a Client registered with the ID Number provided");
 			return "add-client";
+		}
+		if(client.getDateOfBirth().after(date)) {			
+				bindingResult.rejectValue("DateOfBirth", "client.dateOfBirth",
+						"Must be a pass date");
+				return "add-client";
 		}
 		cRepo.save(client);
 		model.addFlashAttribute("success", "Create clien success");
@@ -95,6 +100,14 @@ public class ClientController {
 	@GetMapping("/updateClientForm")
 	public ModelAndView updateClientForm(@RequestParam String Id) {
 		ModelAndView mav = new ModelAndView("update-client");
+		Client cli = cRepo.findById(Id).get();
+		mav.addObject("client", cli);
+		return mav;
+	}
+	
+	@GetMapping("/detailClientForm")
+	public ModelAndView detailClientForm(@RequestParam String Id) {
+		ModelAndView mav = new ModelAndView("detail-client");
 		Client cli = cRepo.findById(Id).get();
 		mav.addObject("client", cli);
 		return mav;
