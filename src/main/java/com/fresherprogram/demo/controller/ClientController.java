@@ -8,7 +8,6 @@ import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.*;
 
-
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,24 +34,24 @@ public class ClientController {
 	private ClientRepository cRepo;
 
 	@GetMapping({ "/show", "/", "/list" })
-	public ModelAndView show() {
+	public ModelAndView show(Client client, String keyword) {
 		ModelAndView mav = new ModelAndView("list-client");
-		Locale locale =new Locale("us");
-		
-		ResourceBundle bundle =  ResourceBundle.getBundle("res",locale);
-//		String mes = bundle.getString("label.frirstname");		
-//		mav.addObject("mes", mes);
-		
-		
-		Enumeration <String> keys = bundle.getKeys();
+		Locale locale = new Locale("us");
+
+		ResourceBundle bundle = ResourceBundle.getBundle("res", locale);
+		Enumeration<String> keys = bundle.getKeys();
 		while (keys.hasMoreElements()) {
 			String key = keys.nextElement();
 			String value = bundle.getString(key);
-			System.out.println(key + ": " + value);
 			mav.addObject(key, value);
 		}
-		List<Client> list = cRepo.findAll();
-		mav.addObject("client", list);
+		if (keyword != null) {
+			List<Client> list = cRepo.findByKeyword(keyword);
+			mav.addObject("client", list);
+		} else {
+			List<Client> list = cRepo.findAll();
+			mav.addObject("client", list);
+		}
 		return mav;
 	}
 
@@ -66,16 +65,15 @@ public class ClientController {
 	}
 
 	@PostMapping("/createClient")
-	public String createClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes  model) {
+	public String createClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes model) {
 
-		Optional<Client> clientByIdentityNumber = cRepo.findClientByIdentityNumber(client.getIdentityNumber());		
-		if ( bindingResult.hasErrors()) {
+		Optional<Client> clientByIdentityNumber = cRepo.findClientByIdentityNumber(client.getIdentityNumber());
+		if (bindingResult.hasErrors()) {
 			return "add-client";
 		}
-		if(clientByIdentityNumber.isPresent()) {
-			bindingResult
-            .rejectValue("IdentityNumber", "client.identityNumber",
-                    "There is already a Client registered with the ID Number provided");
+		if (clientByIdentityNumber.isPresent()) {
+			bindingResult.rejectValue("IdentityNumber", "client.identityNumber",
+					"There is already a Client registered with the ID Number provided");
 			return "add-client";
 		}
 		cRepo.save(client);
@@ -84,11 +82,11 @@ public class ClientController {
 	}
 
 	@PostMapping("/saveClient")
-	public String saveClient(@Valid Client client, BindingResult bindingResult,RedirectAttributes  model) {
-		if ( bindingResult.hasErrors()) {
+	public String saveClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes model) {
+		if (bindingResult.hasErrors()) {
 			return "update-client";
 		}
-		
+
 		cRepo.save(client);
 		model.addFlashAttribute("update", "Update client success");
 		return "redirect:/list";
@@ -101,7 +99,5 @@ public class ClientController {
 		mav.addObject("client", cli);
 		return mav;
 	}
-	
-	
 
 }

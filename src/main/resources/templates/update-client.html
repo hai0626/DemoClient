@@ -9,14 +9,15 @@
 	rel="stylesheet"
 	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
 	crossorigin="anonymous">
-<title>Good Thymes Virtual Grocery</title>
+<title>Wellcom to DXC VIETNAM</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 
 </head>
 <body>
-
+<img style="height: 100px"
+			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
 	<div class="container">
-		<h2>Add Client</h2>
+		<h2 style="text-align: center">Update Client</h2>
 		<hr />
 		<form th:action="@{saveClient}" th:object="${client}" method="POST"
 			class="was-validated">
@@ -60,8 +61,8 @@
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Identity
 					Number </label> <input type="text" th:field="*{identityNumber}"
-					placeholder="Enter IdentityNumber" class="form-control col-4 mb-4"
-					d>
+					placeholder="Enter IdentityNumber" class="form-control col-4 mb-4" readonly
+					>
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('IdentityNumber')}"
 					th:errors="*{IdentityNumber}">
@@ -106,12 +107,18 @@
 			 <input hidden
 				th:field="*{id}">
 			<button class="btn btn-primary" onclick="myFunction()" type="submit">Save</button>
+			<a th:href="@{/list}" class="btn btn-danger">Back to list</a>
 		</form>
-		<hr />
-		<a th:href="@{/list}">Back to list</a>
+		<hr />		
 	</div>
 
 	
 </body>
+
+<footer>
+	<p
+		style="text-align: center; bottom: 0;">
+		Copyright © 2021 DXC Technology </p>
+</footer>
 
 </html>
