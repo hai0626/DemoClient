@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+	crossorigin="anonymous">
+<title>Good Thymes Virtual Grocery</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+
+</style>
+
+</head>
+<body>
+
+	<img style="height: 100px"
+			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
+	<div class="container">
+		
+		<h2 style="text-align: center">List Client</h2>
+		<hr />
+		<div class="alert alert-success" id="success-alert" role="alert"
+			th:if="${success}">
+			<strong th:text="${success}"></strong>
+		</div>
+		<div class="alert alert-primary" id="success-alert" role="alert"
+			th:if="${update}">
+			<strong th:text="${update}"></strong>
+		</div>
+		<a th:href="@{/addClientForm}" class="btn btn-primary mb-2">Add
+			client</a>			
+			<input type=text placeholder="search for" style="float: right">
+		<table class="table table-bordered table-striped">
+			<thead class="thead-dark">
+				<tr >
+					<th scope="col" th:text="${firstname}"></th>
+					<th scope="col" th:text="${lastname}"></th>
+					<th scope="col" th:text="${gender}"></th>
+					<th scope="col" th:text="${doB}"></th>
+					<th scope="col" th:text="${iD}"></th>
+					<th scope="col" th:text="${maritalStatus}"></th>
+					<th scope="col" th:text="${address}"></th>
+					<th scope="col" th:text="${country}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="client: ${client}">
+					<td th:text="${client.FirstName}"></td>
+					<td th:text="${client.LastName}"></td>
+					<td th:text="${client.Gender}"></td>
+					<td th:text="${client.DateOfBirth}"></td>
+					<td th:text="${client.IdentityNumber}"></td>
+					<td th:text="${client.MaritalStatus}"></td>
+					<td th:text="${client.Address}"></td>
+					<td th:text="${client.Country}"></td>
+					<td><a th:href="@{/updateClientForm(Id=${client.Id})}"
+						class="btn btn-info mb-2">Update client</a></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+</body>
+
+</html>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
+<script>
+	$(document).ready(function() {
+
+		$("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+			$("#success-alert").slideUp(500);
+		});
+	});
+</script>
