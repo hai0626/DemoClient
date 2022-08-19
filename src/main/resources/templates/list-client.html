@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html xmlns="https://www.thymeleaf.org">
 <head>
@@ -15,22 +16,14 @@
 	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
 	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
 	crossorigin="anonymous"></script>
+
 <link rel="stylesheet"
 	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <title>Wellcom to DXC VIETNAM</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style>
-input{
-color: transparent;
-}
-input[type=submit] {
-	background:
-		url(https://cdn-icons-png.flaticon.com/512/299/299728.png);
-	border: 0;
-	display: block;
-	height: 30px;
-	width: _the_image_width;
-}
+
+
 </style>
 
 </head>
@@ -40,7 +33,8 @@ input[type=submit] {
 			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
 
 		<form th:action="@{/list}" method="get">
-			<input type="submit" name="local" value="vn">
+			<input class="flag flag-vietnam" type="submit" name="local" value="vn" style="background-color: red">
+			<input class="france flag" type="submit" name="local" value="us" style="background-color: blue">
 		</form>
 
 	</nav>
@@ -63,6 +57,7 @@ input[type=submit] {
 					placeholder="Find by Client" size="50">
 				<button style="margin-left: 10px" type="submit"
 					class="btn btn-secondary mb-2">Search</button>
+					
 			</form>
 			<thead class="thead-dark">
 				<tr>

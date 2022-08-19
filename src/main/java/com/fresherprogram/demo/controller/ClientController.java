@@ -32,12 +32,17 @@ import com.fresherprogram.demo.repository.ClientRepository;
 public class ClientController {
 	@Autowired
 	private ClientRepository cRepo;
+	private Locale locale ;
 
 	@GetMapping({ "/show", "/", "/list" })
 	public ModelAndView show(Client client, String keyword, String local) {
-		ModelAndView mav = new ModelAndView("list-client");				
-		Locale locale = new Locale(local);
-
+		ModelAndView mav = new ModelAndView("list-client");	
+		if(local!=null) {
+		 locale = new Locale(local);
+		}
+		else {
+			 locale = new Locale("us");
+		}
 		ResourceBundle bundle = ResourceBundle.getBundle("res", locale);
 		Enumeration<String> keys = bundle.getKeys();
 		while (keys.hasMoreElements()) {

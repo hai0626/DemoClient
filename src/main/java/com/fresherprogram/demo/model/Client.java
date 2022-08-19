@@ -123,30 +123,31 @@ public class Client   {
 	}
 	
 	@NotEmpty(message = "Please enter FirstName")
-	@Size(min=2,message="LastName must be between 2 and 60 character")
-	@Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
+	@Size(min=2,max=60,message="LastName must be between 2 and 60 character")
+	@Pattern(regexp="^[A-Za-z\\s+]*$",message = "Invalid Input")
 	@Column(name = "FirstName", columnDefinition = "nvarchar(60) not null")	
 	private String FirstName;
 
 	
 	@NotEmpty(message = "Please enter LastName")
-	@Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
-	@Size(min=2,max=60,message="FirstName must be between 2 and 60 character")
+	@Pattern(regexp="^[A-Za-z\\s+]*$",message = "Invalid Input")
+	@Size(min=2,max=60,message="LastName must be between 2 and 60 character")
 	@Column(name = "LastName", columnDefinition = "nvarchar(60) not null")
 	private String LastName;
 	
-	@NotEmpty(message = "Please enter Gender")
+	@NotEmpty(message = "Please choose Gender")
 	@Column(name = "Gender", columnDefinition = "nvarchar(30) not null")
 	private String Gender;
 
-	@NotNull(message = "Please enter birth date")
-    
+	@NotNull(message = "Please choose birth date")    
 	@Column(name = "DateOfBirth", columnDefinition = "date")
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DateOfBirth;
 
 	
 	@NotEmpty(message = "Please enter IdentityNumber")
+	@Pattern(regexp="^[A-Za-z_0-9]*$",message = "Invalid Input")
+	@Size(min=2,max=15,message="FirstName must be between 2 and 15 character")
 	@Column(name = "IdentityNumber", columnDefinition = "nvarchar(15) not null")
 	private String IdentityNumber;
 
@@ -155,8 +156,8 @@ public class Client   {
 	private String MaritalStatus;
 	
 	@NotEmpty(message = "Please enter Address")
-	@Pattern(regexp="^[A-Za-z]*$",message = "Invalid Input")
-	@Size(min=2,max=60,message="FirstName must be between 2 and 120 character")
+	@Pattern(regexp="^[A-Za-z\\s+_0-9]*$",message = "Invalid Input")
+	@Size(min=2,max=120,message="Address must be between 2 and 120 character")
 	@Column(name = "Address", columnDefinition = "nvarchar(120) not null")
 	private String Address;
 	
