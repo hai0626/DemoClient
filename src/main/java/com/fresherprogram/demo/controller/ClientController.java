@@ -99,6 +99,7 @@ public class ClientController {
 		if(client.getDateOfBirth().after(date)) {			
 				bindingResult.rejectValue("DateOfBirth", "client.dateOfBirth",
 						mRepo.findMessageById(2));
+				logger.error("This is error : " + mRepo.findMessageById(2));
 				return "add-client";
 		}
 		cRepo.save(client);
@@ -108,10 +109,16 @@ public class ClientController {
 
 	@PostMapping("/saveClient")
 	public String saveClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes model) {
+		Date date = new Date();
 		if (bindingResult.hasErrors()) {
 			return "update-client";
 		}
-
+		if(client.getDateOfBirth().after(date)) {			
+			bindingResult.rejectValue("DateOfBirth", "client.dateOfBirth",
+					mRepo.findMessageById(2));
+			logger.error("This is error : " + mRepo.findMessageById(2));
+			return "update-client";
+	}
 		cRepo.save(client);
 		model.addFlashAttribute("update", "Update client success");
 		return "redirect:/list";
