@@ -24,14 +24,8 @@ public class FresherProgramApplication {
 
 	private static final Logger logger = LogManager.getLogger(FresherProgramApplication.class);
 	public static void main(String[] args) {
-		SpringApplication.run(FresherProgramApplication.class, args);
-		
-        logger.info("This is an info message");
-        logger.warn("This is a warn message");
-        logger.error("This is an error message");
-        logger.fatal("This is a fatal message");
-
-		
+		SpringApplication.run(FresherProgramApplication.class, args);	
+        		
 	}
 	
 	

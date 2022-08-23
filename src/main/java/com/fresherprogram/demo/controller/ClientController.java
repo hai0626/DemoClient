@@ -10,6 +10,7 @@ import java.util.*;
 
 import javax.validation.Valid;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -25,15 +26,25 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.fresherprogram.demo.model.Client;
+import com.fresherprogram.demo.model.Message;
 
 import com.fresherprogram.demo.repository.ClientRepository;
+import com.fresherprogram.demo.repository.MessageRepository;
+
+
+
 
 @Controller
 public class ClientController {
 	@Autowired
 	private ClientRepository cRepo;
 	private Locale locale ;
-
+	@Autowired
+	private MessageRepository mRepo;
+	
+	final static Logger logger = Logger.getLogger(ClientController.class);
+	
+	
 	@GetMapping({ "/show", "/", "/list" })
 	public ModelAndView show(Client client, String keyword, String local) {
 		ModelAndView mav = new ModelAndView("list-client");	
@@ -72,18 +83,22 @@ public class ClientController {
 	@PostMapping("/createClient")
 	public String createClient(@Valid Client client, BindingResult bindingResult, RedirectAttributes model) {
 		Date date = new Date();
+
 		Optional<Client> clientByIdentityNumber = cRepo.findClientByIdentityNumber(client.getIdentityNumber());
+		
 		if (bindingResult.hasErrors()) {
 			return "add-client";
 		}
 		if (clientByIdentityNumber.isPresent()) {
+			
 			bindingResult.rejectValue("IdentityNumber", "client.identityNumber",
-					"There is already a Client registered with the ID Number provided");
+					mRepo.findMessageById(1));
+			logger.error("This is error : " + mRepo.findMessageById(1));
 			return "add-client";
 		}
 		if(client.getDateOfBirth().after(date)) {			
 				bindingResult.rejectValue("DateOfBirth", "client.dateOfBirth",
-						"Must be a pass date");
+						mRepo.findMessageById(2));
 				return "add-client";
 		}
 		cRepo.save(client);
