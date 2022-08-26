@@ -21,7 +21,7 @@
 	<div class="container">
 		<h2 style="text-align: center">Add Motor Policy</h2>
 
-		<form th:action="@{CreateMotor}" th:object="${motor}" method="POST">
+		<form th:action="@{SaveMotor}" th:object="${motor}" method="POST">
 			<!-- <div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Policy No</label> <input type="text" th:field="*{PolicyNo}"
 					placeholder="Enter FirstName" class="form-control col-4 mb-4">
@@ -138,7 +138,8 @@
 					th:if="${#fields.hasErrors('PostedPremium')}"
 					th:errors="*{PostedPremium}">
 			</div> -->
-
+			
+			<input hidden th:field="*{PolicyNo}">
 			<button class="btn btn-primary" type="submit">Save</button>
 			<a th:href="@{/list}" class="btn btn-danger">Back to list</a>
 			<hr />

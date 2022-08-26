@@ -10,4 +10,5 @@ import com.fresherprogram.demo.model.MotorPolicy;
 public interface MotorService {
 	List<MotorPolicy> getAll();
 	void addMotorPolicy(MotorPolicy motorPolicy);
+	MotorPolicy detailMotor(String id);
 }

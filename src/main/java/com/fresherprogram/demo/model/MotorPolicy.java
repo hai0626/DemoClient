@@ -36,12 +36,12 @@ public class MotorPolicy {
 
 	@NotNull(message = "Please choose Inception Date")
 	@Column(name = "InceptionDate", columnDefinition = "date")
-	// @DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date InceptionDate;
 
 	@NotNull(message = "Please choose Expiry Date")
 	@Column(name = "ExpiryDate", columnDefinition = "date")
-	// @DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ExpiryDate;
 
 	@NotEmpty(message = "Please enter Policy Owner")

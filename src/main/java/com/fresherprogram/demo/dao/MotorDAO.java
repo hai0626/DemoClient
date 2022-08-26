@@ -26,5 +26,9 @@ public class MotorDAO implements MotorService {
 		motorRepository.save(motorPolicy);
 
 	}
+	@Override
+	public MotorPolicy detailMotor(String id) {		
+		return motorRepository.findById(id).get();
+	}
 
 }
