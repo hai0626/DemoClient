@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class FresherProgramApplication {
 
-
-	private static final Logger logger = LogManager.getLogger(FresherProgramApplication.class);
 	public static void main(String[] args) {
 		SpringApplication.run(FresherProgramApplication.class, args);	
         		

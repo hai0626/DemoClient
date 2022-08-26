@@ -1,0 +1,119 @@
+
+<!DOCTYPE html>
+<html xmlns="https://www.thymeleaf.org">
+<head>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+	crossorigin="anonymous">
+
+<script
+	src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"
+	integrity="sha384-eMNCOe7tC1doHpGoWe/6oMVemdAVTMs2xqW4mwXrXsW0L84Iytr2wi5v2QjrP/xp"
+	crossorigin="anonymous"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.min.js"
+	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
+	crossorigin="anonymous"></script>
+
+<link rel="stylesheet"
+	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<title>Wellcom to DXC VIETNAM</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<style>
+
+
+</style>
+
+</head>
+<body>
+	<nav class="navbar navbar-light bg-light">
+		<img style="height: 100px;"
+			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
+
+		<form th:action="@{/list}" method="get">
+			<input class="flag flag-vietnam" type="submit" name="local" value="vn" style="background-color: red">
+			<input class="france flag" type="submit" name="local" value="us" style="background-color: blue">
+		</form>
+
+	</nav>
+
+
+	<div class="container" style="margin-top: 20px">
+		<div class="alert alert-success" id="success-alert" role="alert"
+			th:if="${success}">
+			<strong th:text="${success}"></strong>
+		</div>
+		<div class="alert alert-primary" id="success-alert" role="alert"
+			th:if="${update}">
+			<strong th:text="${update}"></strong>
+		</div>
+		<a style="float: right" th:href="@{/AddMotor}"
+			class="btn btn-success mb-2">Add list</a>
+		<table class="table table-bordered table-striped">			
+			<thead class="thead-dark">
+				<tr>
+					<th scope="col" th:text="${policyno}"></th>
+					<th scope="col" th:text="${inceptiondate}"></th>
+					<th scope="col" th:text="${exprirydate}"></th>
+					<th scope="col" th:text="${policyowner}"></th>
+					<th scope="col" th:text="${enginenumber}"></th>
+					<th scope="col" th:text="${chassisnumber}"></th>
+					<th scope="col" th:text="${vehicleregistrationnumber}"></th>
+					<th scope="col" th:text="${billingcurrency}"></th>
+					<th scope="col" th:text="${suminsured}"></th>
+					<th scope="col" th:text="${rate}"></th>
+					<th scope="col" th:text="${nnualpremium}"></th>
+					<th scope="col" th:text="${ostedpremium}"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr th:each="list: ${list}">
+					<td th:text="${list.PolicyNo}"></td>
+					<td th:text="${list.InceptionDate}"></td>
+					<td th:text="${list.ExpiryDate}"></td>
+					<td th:text="${list.PolicyOwner}"></td>
+					<td th:text="${list.EngineNo}"></td>
+					<td th:text="${list.ChassisNo}"></td>
+					<td th:text="${list.VehicleRegistrationNo}"></td>
+					<td th:text="${list.BillingCurrency}"></td>
+					<td th:text="${list.SumInsured}"></td>
+					<td th:text="${list.Rate}"></td>
+					<td th:text="${list.AnnualPremium}"></td>
+					<td th:text="${list.PostedPremium}"></td>
+					<td><a th:href="@{/updatelistForm(Id=${list.PolicyNo})}"
+						class="btn btn-info mb-2">Updatelist </a> <a
+						th:href="@{/detaillistForm(Id=${list.PolicyNo})}"
+						class="btn btn-info mb-2">Detaillist </a></td>
+				</tr>
+			</tbody>
+
+		</table>
+	</div>
+
+
+</body>
+
+
+<footer>
+	<p style="text-align: center; bottom: 0;">Copyright © 2021 DXC
+		Technology </p>
+</footer>
+
+</html>
+
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script
+	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+	crossorigin="anonymous"></script>
+
+<script>
+	$(document).ready(function() {
+		$("#success-alert").fadeTo(2000, 500).slideUp(500, function() {
+			$("#success-alert").slideUp(500);
+		});
+	});
+</script>
