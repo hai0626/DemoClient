@@ -53,7 +53,7 @@
 
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Policy
-					Owner</label> <input type="text" th:field="*{PolicyOwner}"
+					Owner</label> <input type="text" th:field="*{PolicyOwner}" readonly
 					placeholder="Enter Policy Owner" class="form-control col-4 mb-4">
 				<p class="alert alert-danger col-4 mb-4"
 					th:if="${#fields.hasErrors('PolicyOwner')}"
@@ -121,26 +121,28 @@
 					th:if="${#fields.hasErrors('Rate')}" th:errors="*{Rate}">
 			</div>
 
-			<!-- <div class="col-md-12">
+			 <div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Annual
 					Premium</label> <input type="text" th:field="*{AnnualPremium}"
-					placeholder="Enter Annual Premium" class="form-control col-4 mb-4">
-				<p class="alert alert-danger col-4 mb-4 col-4 mb-4"
+					placeholder="Enter Annual Premium" class="form-control col-4 mb-4" readonly>
+				<!-- <p class="alert alert-danger col-4 mb-4 col-4 mb-4"
 					th:if="${#fields.hasErrors('AnnualPremium')}"
-					th:errors="*{AnnualPremium}">
+					th:errors="*{AnnualPremium}"> -->
 			</div>
 
 			<div class="col-md-12">
 				<label for="validationDefault01" class="form-label">Posted
 					Premium</label> <input type="text" th:field="*{PostedPremium}"
-					placeholder="Enter Posted Premium" class="form-control col-4 mb-4">
-				<p class="alert alert-danger col-4 mb-4 col-4 mb-4"
+					placeholder="Enter Posted Premium" class="form-control col-4 mb-4" readonly>
+				<!-- <p class="alert alert-danger col-4 mb-4 col-4 mb-4"
 					th:if="${#fields.hasErrors('PostedPremium')}"
-					th:errors="*{PostedPremium}">
-			</div> -->
+					th:errors="*{PostedPremium}"> -->
+			</div> 
 			
 			<input hidden th:field="*{PolicyNo}">
-			<button class="btn btn-primary" type="submit">Save</button>
+			<button class="btn btn-primary" type="submit" name="check" value="Save">Save</button>
+			<button class="btn btn-primary" type="submit" name="check" value="Issue">Issue</button>
+			<button class="btn btn-primary" type="submit" name="check" value="Refresh">Refresh</button>
 			<a th:href="@{/list}" class="btn btn-danger">Back to list</a>
 			<hr />
 		</form>

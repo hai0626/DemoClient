@@ -36,22 +36,22 @@ public class MotorPolicy {
 
 	@NotNull(message = "Please choose Inception Date")
 	@Column(name = "InceptionDate", columnDefinition = "date")
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
+	// @DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date InceptionDate;
 
-	@NotNull(message = "Please choose Expiry Date")
-	@Column(name = "ExpiryDate", columnDefinition = "date")
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
-	private Date ExpiryDate;
-
 	@NotEmpty(message = "Please enter Policy Owner")
-	@Size(min = 2, max = 8, message = "LastName must be between 2 and 8 character")
+	@Size(min = 2, max = 8, message = "Policy Owner must be between 2 and 8 character")
 	@Pattern(regexp = "^[A-Za-z_0-9\\s+]*$", message = "Invalid Input")
 	@Column(name = "PolicyOwner", columnDefinition = "nvarchar(8) not null")
 	private String PolicyOwner;
 
+	@NotNull(message = "Please choose Expiry Date")
+	@Column(name = "ExpiryDate", columnDefinition = "date")
+	// @DateTimeFormat(pattern = "yyyy-MM-dd")
+	private Date ExpiryDate;
+
 	@NotEmpty(message = "Please enter Engine No")
-	@Size(min = 2, max = 30, message = "LastName must be between 2 and 30 character")
+	@Size(min = 2, max = 30, message = "Engine No must be between 2 and 30 character")
 	@Pattern(regexp = "^[A-Za-z_0-9]*$", message = "Invalid Input")
 	@Column(name = "EngineNo", columnDefinition = "nvarchar(30) not null")
 	private String EngineNo;
@@ -62,8 +62,8 @@ public class MotorPolicy {
 	@Column(name = "ChassisNo", columnDefinition = "nvarchar(30) not null")
 	private String ChassisNo;
 
-	@NotEmpty(message = "Please enter Chassis No")
-	@Size(min = 2, max = 30, message = "LastName must be between 2 and 30 character")
+	@NotEmpty(message = "Please enter Vehicle Registration No")
+	@Size(min = 2, max = 30, message = "Vehicle Registration No must be between 2 and 30 character")
 	@Pattern(regexp = "^[A-Za-z_0-9_-]*$", message = "Invalid Input")
 	@Column(name = "VehicleRegistrationNo", columnDefinition = "nvarchar(30) not null")
 	private String VehicleRegistrationNo;

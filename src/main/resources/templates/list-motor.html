@@ -30,7 +30,7 @@
 		<img style="height: 100px;"
 			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
 
-		<form th:action="@{/list}" method="get">
+		<form th:action="@{/motor}" method="get">
 			<input class="flag flag-vietnam" type="submit" name="local"
 				value="vn" style="background-color: red"> <input
 				class="france flag" type="submit" name="local" value="us"
@@ -50,11 +50,11 @@
 			<strong th:text="${update}"></strong>
 		</div>
 		<a style="float: right" th:href="@{/AddMotor}"
-			class="btn btn-success mb-2">Add list</a>
+			class="btn btn-success mb-2" th:text="${addpolicy}"></a>
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<th scope="col" th:text="${policyno}"></th>
+					<!-- <th scope="col" th:text="${policyno}"></th> -->
 					<th scope="col" th:text="${inceptiondate}"></th>
 					<th scope="col" th:text="${exprirydate}"></th>
 					<th scope="col" th:text="${policyowner}"></th>
@@ -70,7 +70,7 @@
 			</thead>
 			<tbody>
 				<tr th:each="list: ${list}">
-					<td th:text="${list.PolicyNo}"></td>
+					<td hidden th:text="${list.PolicyNo}"></td>
 					<td th:text="${list.InceptionDate}"></td>
 					<td th:text="${list.ExpiryDate}"></td>
 					<td th:text="${list.PolicyOwner}"></td>
@@ -82,10 +82,10 @@
 					<td th:text="${list.Rate}"></td>
 					<td th:text="${list.AnnualPremium}"></td>
 					<td th:text="${list.PostedPremium}"></td>
-					<td><a th:href="@{/UpdateMotor(Id=${list.PolicyNo})}"
-						class="btn btn-info mb-2">Update</a> <a
+					<td><a th:if="${list.PolicyStatus}=='PN'" th:href="@{/UpdateMotor(Id=${list.PolicyNo})}"
+						class="btn btn-info mb-2" th:text="${updatepolicy}"></a> <a
 						th:href="@{/DetailMotor(Id=${list.PolicyNo})}"
-						class="btn btn-info mb-2">Detail</a></td>
+						class="btn btn-info mb-2" th:text="${detailpolicy}"></a></td>
 				</tr>
 			</tbody>
 
