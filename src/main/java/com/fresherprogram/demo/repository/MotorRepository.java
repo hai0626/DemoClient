@@ -19,5 +19,8 @@ public interface MotorRepository extends JpaRepository<MotorPolicy, String> {
 	
 	@Query("SELECT m FROM MotorPolicy m WHERE m.EngineNo = ?1")
 	Optional<MotorPolicy> findByEngine(String engine);
+	
+	@Query("SELECT m FROM MotorPolicy m WHERE m.PolicyNo = :policyno")
+	MotorPolicy findByPolicy(String policyno);
 
 }

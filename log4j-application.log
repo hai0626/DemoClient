@@ -1,3 +1,36 @@
 2022-08-29 17:43:53 ERROR MotorController:122 - This is error : Duplicate Engine and Chassis No
 2022-08-29 17:43:53 ERROR MotorController:126 - This is error : Duplicate Engine and Chassis No
 2022-08-29 17:43:53 ERROR MotorController:130 - This is error : Duplicate Reg. No exists
+2022-08-30 09:19:14 ERROR MotorController:116 - This is error : Duplicate Engine and Chassis No
+2022-08-30 09:19:14 ERROR MotorController:120 - This is error : Duplicate Engine and Chassis No
+2022-08-30 09:19:14 ERROR MotorController:124 - This is error : Duplicate Reg. No exists
+2022-08-30 09:19:36 ERROR MotorController:116 - This is error : Duplicate Engine and Chassis No
+2022-08-30 09:19:36 ERROR MotorController:120 - This is error : Duplicate Engine and Chassis No
+2022-08-30 09:19:36 ERROR MotorController:124 - This is error : Duplicate Reg. No exists
+2022-08-30 09:20:02 ERROR MotorController:116 - This is error : Duplicate Engine and Chassis No
+2022-08-30 09:20:02 ERROR MotorController:120 - This is error : Duplicate Engine and Chassis No
+2022-08-30 09:20:02 ERROR MotorController:124 - This is error : Duplicate Reg. No exists
+2022-08-30 11:18:39 ERROR MotorController:109 - This is error : Client not exist
+2022-08-30 11:18:39 ERROR MotorController:125 - This is error : Expiry Date must larger than Inception Date
+2022-08-30 11:18:47 ERROR MotorController:109 - This is error : Client not exist
+2022-08-30 11:18:47 ERROR MotorController:125 - This is error : Expiry Date must larger than Inception Date
+2022-08-30 11:19:05 ERROR MotorController:109 - This is error : Client not exist
+2022-08-30 11:19:14 ERROR MotorController:109 - This is error : Client not exist
+2022-08-30 11:19:33 ERROR MotorController:109 - This is error : Client not exist
+2022-08-30 11:19:46 ERROR MotorController:109 - This is error : Client not exist
+2022-08-30 11:19:56 ERROR MotorController:109 - This is error : Client not exist
+2022-08-30 14:47:45 ERROR MotorController:111 - This is error : Client not exist
+2022-08-30 14:50:56 ERROR MotorController:111 - This is error : Client not exist
+2022-08-30 14:56:21 ERROR MotorController:111 - This is error : Client not exist
+2022-08-30 14:56:21 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
+2022-08-30 14:59:50 ERROR MotorController:111 - This is error : Client not exist
+2022-08-30 14:59:50 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
+2022-08-30 14:59:50 ERROR MotorController:119 - This is error : Duplicate Engine and Chassis No
+2022-08-30 15:03:51 ERROR MotorController:111 - This is error : Client not exist
+2022-08-30 15:03:51 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
+2022-08-30 15:04:30 ERROR MotorController:111 - This is error : Client not exist
+2022-08-30 15:04:30 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
+2022-09-05 17:06:44 ERROR MotorController:111 - This is error : Client not exist
+2022-09-05 17:07:07 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
+2022-09-05 17:07:07 ERROR MotorController:119 - This is error : Duplicate Engine and Chassis No
+2022-09-05 17:07:07 ERROR MotorController:123 - This is error : Duplicate Reg. No exists

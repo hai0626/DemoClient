@@ -29,4 +29,20 @@ public class GlobalExceptionHandler {
 		return messageRepository.findMessageById(8);
 	}
 	
+	public String policyExist() {
+		return messageRepository.findMessageById(9);
+	}
+	
+	public String policyStatus() {
+		return messageRepository.findMessageById(10);
+	}
+	
+	public String larger() {
+		return messageRepository.findMessageById(11);
+	}
+	
+	public String dayFuture() {
+		return messageRepository.findMessageById(12);
+	}
+	
 }

@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.DecimalMin;
+import javax.validation.constraints.Digits;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
@@ -36,7 +38,7 @@ public class MotorPolicy {
 
 	@NotNull(message = "Please choose Inception Date")
 	@Column(name = "InceptionDate", columnDefinition = "date")
-	// @DateTimeFormat(pattern = "yyyy-MM-dd")
+	//@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date InceptionDate;
 
 	@NotEmpty(message = "Please enter Policy Owner")
@@ -47,7 +49,7 @@ public class MotorPolicy {
 
 	@NotNull(message = "Please choose Expiry Date")
 	@Column(name = "ExpiryDate", columnDefinition = "date")
-	// @DateTimeFormat(pattern = "yyyy-MM-dd")
+	 //@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ExpiryDate;
 
 	@NotEmpty(message = "Please enter Engine No")
@@ -72,9 +74,15 @@ public class MotorPolicy {
 	@Column(name = "BillingCurrency", columnDefinition = "nvarchar(30) not null")
 	private String BillingCurrency;
 
+	@NotNull(message = "Please enter Sum Insured")
+	@DecimalMin(value = "0", message = "Sum Insured must not be negative")
+	@Digits(integer = 17, fraction = 2)
 	@Column(name = "SumInsured", precision = 17, scale = 2, columnDefinition = "decimal (17,2) not null")
 	private BigDecimal SumInsured;
 
+	@NotNull(message = "Please enter Rate")
+	@Digits(integer = 7, fraction = 5)
+	@DecimalMin(value = "0.00000", message = "Rate must not be negative")
 	@Column(name = "Rate", precision = 7, scale = 5, columnDefinition = "decimal (7,5) not null")
 	private BigDecimal Rate;
 

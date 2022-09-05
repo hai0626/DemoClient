@@ -30,7 +30,7 @@
 		<img style="height: 100px;"
 			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
 
-		<form th:action="@{/motor}" method="get">
+		<form th:action="@{/claim}" method="get">
 			<input class="flag flag-vietnam" type="submit" name="local"
 				value="vn" style="background-color: red"> <input
 				class="france flag" type="submit" name="local" value="us"
@@ -49,43 +49,40 @@
 			th:if="${update}">
 			<strong th:text="${update}"></strong>
 		</div>
-		<a style="float: right" th:href="@{/AddMotor}"
+		<a style="float: right" th:href="@{/AddClaim}"
 			class="btn btn-success mb-2" th:text="${addpolicy}"></a>
 		<table class="table table-bordered table-striped">
 			<thead class="thead-dark">
 				<tr>
-					<!-- <th scope="col" th:text="${policyno}"></th> -->
-					<th scope="col" th:text="${inceptiondate}"></th>
-					<th scope="col" th:text="${exprirydate}"></th>
+					<th scope="col" th:text="${claimno}"></th>
+					<th scope="col" th:text="${dateoccurred}"></th>
+					<th scope="col" th:text="${policyno}"></th>
 					<th scope="col" th:text="${policyowner}"></th>
 					<th scope="col" th:text="${enginenumber}"></th>
 					<th scope="col" th:text="${chassisnumber}"></th>
 					<th scope="col" th:text="${vehicleregistrationnumber}"></th>
-					<th scope="col" th:text="${billingcurrency}"></th>
 					<th scope="col" th:text="${suminsured}"></th>
-					<th scope="col" th:text="${rate}"></th>
-					<th scope="col" th:text="${nnualpremium}"></th>
-					<th scope="col" th:text="${ostedpremium}"></th>
+					<th scope="col" th:text="${reservecurrency}"></th>
+					<th scope="col" th:text="${reserveamount}"></th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr th:each="list: ${list}">
-					<td hidden th:text="${list.PolicyNo}"></td>
-					<td th:text="${list.InceptionDate}"></td>
-					<td th:text="${list.ExpiryDate}"></td>
+					<th th:text="${list.ClaimNo}"></th>
+					<td th:text="${list.DateOccurred}"></td>
+					<td th:text="${list.PolicyNo}"></td>
 					<td th:text="${list.PolicyOwner}"></td>
 					<td th:text="${list.EngineNo}"></td>
 					<td th:text="${list.ChassisNo}"></td>
 					<td th:text="${list.VehicleRegistrationNo}"></td>
-					<td th:text="${list.BillingCurrency}"></td>
+
 					<td th:text="${list.SumInsured}"></td>
-					<td th:text="${list.Rate}"></td>
-					<td th:text="${list.AnnualPremium}"></td>
-					<td th:text="${list.PostedPremium}"></td>
-					<td><a th:if="${list.PolicyStatus}=='PN'"
-						th:href="@{/UpdateMotor(Id=${list.PolicyNo})}"
-						class="btn btn-info mb-2" th:text="${updatepolicy}"></a> <a
-						th:href="@{/DetailMotor(Id=${list.PolicyNo})}"
+					<td th:text="${list.ReserveCurrency}"></td>
+					<td th:text="${list.ReserveAmount}"></td>
+					<td><a th:if="${list.ClaimStatus}=='Pending'"
+						th:href="@{/UpdateClaim(Id=${list.ClaimNo})}"
+						class="btn btn-info mb-2" th:text="${updatepolicy}"></a><a
+						th:href="@{/DetailMotor(Id=${list.ClaimNo})}"
 						class="btn btn-info mb-2" th:text="${detailpolicy}"></a></td>
 				</tr>
 			</tbody>

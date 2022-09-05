@@ -141,10 +141,9 @@ public class MotorController {
 		} else if (check.equals("Issue")) {
 			motor.setPolicyStatus("IF");
 		} else {
-
 			return "add-motor";
 		}
-		motorService.addMotorPolicy(motor);
+		motorService.saveMotorPolicy(motor);
 		model.addFlashAttribute("success", "Create policy successfully");
 		return "redirect:/motor";
 	}
@@ -189,7 +188,7 @@ public class MotorController {
 		} else {
 			return "update-motor";
 		}
-		motorService.addMotorPolicy(motor);
+		motorService.saveMotorPolicy(motor);
 		model.addFlashAttribute("success", "Update policy successfully");
 		return "redirect:/motor";
 	}

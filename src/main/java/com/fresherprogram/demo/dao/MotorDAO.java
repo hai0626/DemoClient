@@ -23,7 +23,7 @@ public class MotorDAO implements MotorService {
 	}
 
 	@Override
-	public void addMotorPolicy(MotorPolicy motorPolicy) {
+	public void saveMotorPolicy(MotorPolicy motorPolicy) {
 		motorRepository.save(motorPolicy);
 
 	}
@@ -48,6 +48,11 @@ public class MotorDAO implements MotorService {
 	public Optional<MotorPolicy> findByChassis(String chassis) {
 		// TODO Auto-generated method stub
 		return motorRepository.findByChassis(chassis);
+	}
+	@Override
+	public MotorPolicy findByMotorPolicy(String motorPolicy) {
+		// TODO Auto-generated method stub
+		return motorRepository.findByPolicy(motorPolicy);
 	}
 
 }
