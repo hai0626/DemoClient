@@ -27,8 +27,8 @@
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light">
-		<img style="height: 100px;"
-			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
+		<a href="http://localhost:8080/claim"><img style="height: 100px"
+			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png"></a>
 
 		<form th:action="@{/motor}" method="get">
 			<input class="flag flag-vietnam" type="submit" name="local"
@@ -64,8 +64,8 @@
 					<th scope="col" th:text="${billingcurrency}"></th>
 					<th scope="col" th:text="${suminsured}"></th>
 					<th scope="col" th:text="${rate}"></th>
-					<th scope="col" th:text="${nnualpremium}"></th>
-					<th scope="col" th:text="${ostedpremium}"></th>
+					<th scope="col" th:text="${annualpremium}"></th>
+					<th scope="col" th:text="${postedpremium}"></th>
 				</tr>
 			</thead>
 			<tbody>
@@ -84,9 +84,9 @@
 					<td th:text="${list.PostedPremium}"></td>
 					<td><a th:if="${list.PolicyStatus}=='PN'"
 						th:href="@{/UpdateMotor(Id=${list.PolicyNo})}"
-						class="btn btn-info mb-2" th:text="${updatepolicy}"></a> <a
+						class="btn btn-info mb-2" th:text="${update1}"></a> <a
 						th:href="@{/DetailMotor(Id=${list.PolicyNo})}"
-						class="btn btn-info mb-2" th:text="${detailpolicy}"></a></td>
+						class="btn btn-info mb-2" th:text="${detail}"></a></td>
 				</tr>
 			</tbody>
 

@@ -17,24 +17,23 @@
 	integrity="sha384-cn7l7gDp0eyniUwwAZgrzD06kc/tftFf19TOAs2zVinnD/C7E91j9yyk5//jjpt/"
 	crossorigin="anonymous"></script>
 
-<link rel="stylesheet"
-	href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <title>Wellcom to DXC VIETNAM</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <style>
-
-
 </style>
 
 </head>
 <body>
 	<nav class="navbar navbar-light bg-light">
-		<img style="height: 100px;"
-			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png">
+		<a href="http://localhost:8080/claim"><img style="height: 100px"
+			src="https://upload.wikimedia.org/wikipedia/commons/8/88/DXC_Logo_2021_Purple_Black.png"></a>
 
 		<form th:action="@{/list}" method="get">
-			<input class="flag flag-vietnam" type="submit" name="local" value="vn" style="background-color: red">
-			<input class="france flag" type="submit" name="local" value="us" style="background-color: blue">
+			<input class="flag flag-vietnam" type="submit" name="local"
+				value="vn" style="background-color: red"> <input
+				class="france flag" type="submit" name="local" value="us"
+				style="background-color: blue">
 		</form>
 
 	</nav>
@@ -50,15 +49,15 @@
 			<strong th:text="${update}"></strong>
 		</div>
 		<a style="float: right" th:href="@{/addClientForm}"
-			class="btn btn-success mb-2">Add client</a>
+			class="btn btn-success mb-2" th:text="${addclient}"></a>
 		<table class="table table-bordered table-striped">
-			<form th:action="@{/list}" method="get">
+			<!-- <form th:action="@{/list}" method="get">
 				<input type="text" name="keyword" th:value="${keyword}"
 					placeholder="Find by Client" size="50">
 				<button style="margin-left: 10px" type="submit"
 					class="btn btn-secondary mb-2">Search</button>
 					
-			</form>
+			</form> -->
 			<thead class="thead-dark">
 				<tr>
 					<th scope="col" th:text="${firstname}"></th>
@@ -82,9 +81,9 @@
 					<td th:text="${client.Address}"></td>
 					<td th:text="${client.Country}"></td>
 					<td><a th:href="@{/updateClientForm(Id=${client.Id})}"
-						class="btn btn-info mb-2">Update client </a> <a
+						class="btn btn-info mb-2" th:text="${update1}"></a> <a
 						th:href="@{/detailClientForm(Id=${client.Id})}"
-						class="btn btn-info mb-2">Detail client </a></td>
+						class="btn btn-info mb-2" th:text="${detail}"> </a></td>
 				</tr>
 			</tbody>
 
