@@ -34,3 +34,16 @@
 2022-09-05 17:07:07 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
 2022-09-05 17:07:07 ERROR MotorController:119 - This is error : Duplicate Engine and Chassis No
 2022-09-05 17:07:07 ERROR MotorController:123 - This is error : Duplicate Reg. No exists
+2022-09-06 09:59:39 ERROR ClaimController:79 - This is error : Policy does not exist
+2022-09-06 10:00:06 ERROR ClaimController:100 - This is error : Must not be greater than Sum Insured
+2022-09-06 10:00:21 ERROR ClaimController:91 - This is error : Date cannot be in the future
+2022-09-06 10:00:21 ERROR ClaimController:100 - This is error : Must not be greater than Sum Insured
+2022-09-06 10:30:59 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
+2022-09-06 10:30:59 ERROR MotorController:119 - This is error : Duplicate Engine and Chassis No
+2022-09-06 10:30:59 ERROR MotorController:123 - This is error : Duplicate Reg. No exists
+2022-09-06 10:33:02 ERROR MotorController:127 - This is error : Expiry Date must larger than Inception Date
+2022-09-06 10:44:15 ERROR MotorController:111 - This is error : Client not exist
+2022-09-06 11:41:12 ERROR MotorController:115 - This is error : Duplicate Engine and Chassis No
+2022-09-06 11:41:12 ERROR MotorController:119 - This is error : Duplicate Engine and Chassis No
+2022-09-06 11:41:12 ERROR MotorController:123 - This is error : Duplicate Reg. No exists
+2022-09-06 11:41:12 ERROR MotorController:127 - This is error : Expiry Date must larger than Inception Date

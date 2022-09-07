@@ -76,6 +76,7 @@ public class ClaimController {
 		}
 		if (mp == null) {
 			bindingResult.addError(new FieldError("claim", "PolicyNo", exceptionHandler.policyExist()));
+			logger.error("This is error : " + exceptionHandler.policyExist());
 			return "add-claim";
 		}
 		claim.setPolicyOwner(mp.getPolicyOwner());
@@ -87,14 +88,16 @@ public class ClaimController {
 				|| (claim.getSumInsured().compareTo(claim.getReserveAmount()) == -1)) {
 			if (claim.getDateOccurred().after(date)) {
 				bindingResult.addError(new FieldError("claim", "DateOccurred", exceptionHandler.dayFuture()));
+				logger.error("This is error : " + exceptionHandler.dayFuture());
 			}
 
 			if (!mp.getPolicyStatus().equals("IF")) {
 				bindingResult.addError(new FieldError("claim", "ClaimStatus", exceptionHandler.policyStatus()));
-
+				logger.error("This is error : " + exceptionHandler.policyStatus());
 			}
 			if (claim.getSumInsured().compareTo(claim.getReserveAmount()) == -1) {
 				bindingResult.addError(new FieldError("claim", "ReserveAmount", exceptionHandler.larger()));
+				logger.error("This is error : " + exceptionHandler.larger());
 			}
 			return "add-claim";
 		}
@@ -129,9 +132,11 @@ public class ClaimController {
 		if (claim.getDateOccurred().after(date) || (claim.getSumInsured().compareTo(claim.getReserveAmount()) == -1)) {
 			if (claim.getDateOccurred().after(date)) {
 				bindingResult.addError(new FieldError("claim", "DateOccurred", exceptionHandler.dayFuture()));
+				logger.error("This is error : " + exceptionHandler.dayFuture());
 			}
 			if (claim.getSumInsured().compareTo(claim.getReserveAmount()) == -1) {
 				bindingResult.addError(new FieldError("claim", "ReserveAmount", exceptionHandler.larger()));
+				logger.error("This is error : " + exceptionHandler.larger());
 			}
 			return "add-claim";
 		}
@@ -145,4 +150,13 @@ public class ClaimController {
 		model.addFlashAttribute("success", "Update claim successfully");
 		return "redirect:/claim";
 	}
+	
+	@GetMapping("/DetailClaim")
+	public ModelAndView detailClaim(@RequestParam String Id) {
+		ModelAndView mav = new ModelAndView("detail-claim");
+		Claim claim = claimService.detaiClaim(Id);
+		mav.addObject("claim", claim);
+		return mav;
+	}
+
 }

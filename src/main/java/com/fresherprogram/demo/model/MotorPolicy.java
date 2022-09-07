@@ -1,7 +1,7 @@
 package com.fresherprogram.demo.model;
 
 import java.math.BigDecimal;
-import java.sql.Date;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -38,18 +38,18 @@ public class MotorPolicy {
 
 	@NotNull(message = "Please choose Inception Date")
 	@Column(name = "InceptionDate", columnDefinition = "date")
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date InceptionDate;
 
 	@NotEmpty(message = "Please enter Policy Owner")
-	@Size(min = 2, max = 8, message = "Policy Owner must be between 2 and 8 character")
+	@Size(min = 8, max = 8, message = "Policy Owner must be 8 character")
 	@Pattern(regexp = "^[A-Za-z_0-9\\s+]*$", message = "Invalid Input")
 	@Column(name = "PolicyOwner", columnDefinition = "nvarchar(8) not null")
 	private String PolicyOwner;
 
 	@NotNull(message = "Please choose Expiry Date")
 	@Column(name = "ExpiryDate", columnDefinition = "date")
-	 //@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date ExpiryDate;
 
 	@NotEmpty(message = "Please enter Engine No")
