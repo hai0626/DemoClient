@@ -123,14 +123,14 @@ public class Claim {
 	private String ClaimNo;
 	
 	@NotEmpty(message = "Please enter Policy No")
-	@Size(min = 2, max = 8, message = "Policy No must be between 2 and 8 character")
+	@Size(min = 8, max = 8, message = "Policy No must be 8 character")
 	@Pattern(regexp = "^[A-Za-z_0-9\\s+]*$", message = "Invalid Input")
 	@Column(name = "PolicyNo", columnDefinition = "nvarchar(8) not null")
 	private String PolicyNo;
 	
 	@NotNull(message = "Please choose Date Occurred")
 	@Column(name = "DateOccurred", columnDefinition = "date")
-	//@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private Date DateOccurred;
 	
 	@Column(name = "PolicyOwner", columnDefinition = "nvarchar(8) not null")
@@ -152,8 +152,8 @@ public class Claim {
 	@Column(name = "ReserveCurrency", columnDefinition = "nvarchar(30) not null")
 	private String ReserveCurrency;
 	
-	@NotNull(message = "Please enter Sum Insured")
-	@DecimalMin(value = "0", message = "Sum Insured must not be negative")
+	@NotNull(message = "Please enter Reserve Amount")
+	@DecimalMin(value = "0", message = "Reserve Amount must not be negative")
 	@Digits(integer = 17, fraction = 2)
 	@Column(name = "ReserveAmount", precision = 17, scale = 2, columnDefinition = "decimal (17,2) not null")
 	private BigDecimal ReserveAmount;

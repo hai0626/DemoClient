@@ -16,7 +16,7 @@ public class GenerateClaim implements IdentifierGenerator{
 		String query = "SELECT c.ClaimNo FROM Claim c";
 		Stream<String> ids = session.createQuery(query, String.class).stream();
 		Long max = ids.map(o -> o.replace(prefix, "")).mapToLong(Long::parseLong).max().orElse(0L);
-		return prefix + (String.format("%05d", max + 1));
+		return prefix + (String.format("%06d", max + 1));
 
 	}
 }
